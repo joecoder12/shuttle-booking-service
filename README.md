@@ -1,5 +1,7 @@
 # Shuttle Booking Service
 
+[![CI](https://github.com/joecoder12/shuttle-booking-service/actions/workflows/ci.yml/badge.svg)](https://github.com/joecoder12/shuttle-booking-service/actions/workflows/ci.yml)
+
 A Spring Boot REST API for employee transport: employees book seats on scheduled office shuttle
 trips, and each trip gets an ordered pickup route for the driver.
 
@@ -14,7 +16,7 @@ The two parts that make it more than CRUD:
 ## Tech stack
 
 Java 21 · Spring Boot 4 (Web MVC, Data JPA, Validation, Actuator) · Hibernate · H2 ·
-springdoc-openapi (Swagger UI) · JUnit 5 · Mockito · MockMvc · JaCoCo · Maven
+springdoc-openapi (Swagger UI) · JUnit 5 · Mockito · MockMvc · JaCoCo · Maven · GitHub Actions
 
 ## Running it
 
@@ -170,7 +172,8 @@ check that:
   error status codes.
 - **Concurrency tests:** real threads against the real database, described above.
 
-JaCoCo writes a coverage report to `target/site/jacoco/index.html`.
+JaCoCo writes a coverage report to `target/site/jacoco/index.html`. GitHub Actions runs the full
+build on every push and pull request.
 
 ## Project layout
 
