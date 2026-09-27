@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: shuttle-booking-service
+  datasource:
+    # In-memory H2 so the service runs with zero setup. LOCK_TIMEOUT gives queued seat
+    # bookings time to wait for the trip row lock instead of failing immediately.
+    url: jdbc:h2:mem:shuttle;DB_CLOSE_DELAY=-1;LOCK_TIMEOUT=10000
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+
+shuttle:
+  booking:
+    # Bookings close this long before a trip departs, so the driver gets a final pickup list.
+    cutoff: 30m
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
