@@ -5,6 +5,10 @@
 A Spring Boot REST API for employee transport: employees book seats on scheduled office shuttle
 trips, and each trip gets an ordered pickup route for the driver.
 
+**Live API docs:** <https://shuttle-booking-service.onrender.com/swagger-ui.html> (Render free
+tier: the first request after a quiet spell can take about a minute while the service wakes up,
+and the in-memory data resets whenever it restarts).
+
 The two parts that make it more than CRUD:
 
 - **Seats can't be overbooked, even under concurrent load.** Booking a seat takes a row-level
@@ -31,6 +35,10 @@ Requires JDK 21 or newer. The Maven wrapper downloads Maven for you.
 - Health check: http://localhost:8080/actuator/health
 
 The database is in-memory H2, so there is nothing to set up (and data resets on restart).
+
+To run it in a container instead, `docker build -t shuttle . && docker run -p 8080:8080 shuttle`.
+The hosted demo is built from the same [`Dockerfile`](Dockerfile) via the
+[`render.yaml`](render.yaml) blueprint; the port follows the `PORT` variable when one is set.
 
 ### Try it
 
